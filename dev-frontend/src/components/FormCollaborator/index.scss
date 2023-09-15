@@ -1,0 +1,27 @@
+.fieldset {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.fieldset h1 {
+  position: absolute;
+  color: $dark;
+  top: 0;
+  font-size: 24px;
+  line-height: 1;
+  margin: -16px 0 0; /* half of font-size */
+  background: #fff;
+  padding: 5px 15px;
+  border: 1px solid $dark;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 50px;
+}
+
+@media (max-width: 390px) {
+  .fieldset h1 {
+    margin: -16px 0 0 -80px;
+  }
+}

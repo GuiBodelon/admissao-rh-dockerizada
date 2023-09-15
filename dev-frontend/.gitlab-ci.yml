@@ -1,0 +1,22 @@
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Pages/HTML.gitlab-ci.yml
+
+# Full project: https://gitlab.com/pages/plain-html
+pages:
+  image: node:latest
+  stage: deploy
+  script:
+    - npm install -g @quasar/cli
+    - npm install --progress=false
+    - quasar build
+    # GitLab requires all the static page files to be in /public
+    # Because Quasar uses /public for files, they will be deleted after
+    # "compilation" and the compiled files will be moved to public.
+    - rm -rf public
+    - mkdir public
+    - cp -r dist/spa/* public
+  artifacts:
+    paths:
+      - public
